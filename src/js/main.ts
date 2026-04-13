@@ -92,13 +92,10 @@ const init = async () => {
         supportSection.style.display = 'none';
       }
 
-      // Hide "Used by companies" section
-      const usedBySection = document.querySelector(
-        '.hide-section'
-      ) as HTMLElement;
-      if (usedBySection) {
-        usedBySection.style.display = 'none';
-      }
+      // Hide all .hide-section elements (banner, "used by companies", etc.)
+      document.querySelectorAll('.hide-section').forEach((el) => {
+        (el as HTMLElement).style.display = 'none';
+      });
 
       const sectionDividers = document.querySelectorAll('.section-divider');
       sectionDividers.forEach((divider) => {

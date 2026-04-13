@@ -1,4 +1,5 @@
 import { defineConfig, Plugin } from 'vitest/config';
+import { loadEnv } from 'vite';
 import type { IncomingMessage, ServerResponse } from 'http';
 import http from 'http';
 import https from 'https';
@@ -350,7 +351,11 @@ function rewriteHtmlPathsPlugin(): Plugin {
   };
 }
 
-export default defineConfig(() => {
+export default defineConfig(({ mode }) => {
+  // Load .env files into process.env so Handlebars context and define block pick them up
+  const env = loadEnv(mode, process.cwd(), '');
+  Object.assign(process.env, env);
+
   const USE_CDN = process.env.VITE_USE_CDN === 'true';
 
   if (USE_CDN) {
