@@ -93,4 +93,6 @@ COPY --chown=nginx:nginx --chmod=755 nginx-ipv6.sh /docker-entrypoint.d/99-disab
 RUN mkdir -p /etc/nginx/tmp && chown -R nginx:nginx /etc/nginx/tmp
 
 EXPOSE 8080
+HEALTHCHECK --interval=10s --timeout=5s --start-period=15s --retries=3 \
+  CMD wget -qO- http://localhost:8080/ > /dev/null || exit 1
 CMD ["nginx", "-g", "daemon off;"]
