@@ -1,4 +1,4 @@
-name: Build and Deploy Gold Leaf PDF Tools
+name: Build and Deploy eDMS PDF Tools
 
 on:
   push:
@@ -37,7 +37,7 @@ jobs:
           cache-to: type=gha,mode=max
           build-args: |
             SIMPLE_MODE=true
-            VITE_BRAND_NAME=Gold Leaf PDF Tools
+            VITE_BRAND_NAME=eDMS PDF Tools
             VITE_BRAND_LOGO=images/goldleaf_logo.png
             VITE_FOOTER_TEXT=Gold Leaf Holdings — PDF Tools
           tags: |

@@ -26,18 +26,31 @@
   --font-merriweather: 'Merriweather', serif;
   --font-cedarville: 'Cedarville Cursive', cursive;
 
-  /* Gold Leaf Holdings brand — replace indigo (#FCB51B) with gold (#FCB51B) */
-  --color-indigo-50:  #fffbeb;
+  /* Gold Leaf Holdings brand — replace indigo with gold (#FCB51B) */
+  --color-indigo-50: #fffbeb;
   --color-indigo-100: #fef3c7;
   --color-indigo-200: #fde68a;
   --color-indigo-300: #fcd34d;
   --color-indigo-400: #fbbf24;
-  --color-indigo-500: #FCB51B;
-  --color-indigo-600: #FCB51B;
-  --color-indigo-700: #D4980E;
+  --color-indigo-500: #fcb51b;
+  --color-indigo-600: #fcb51b;
+  --color-indigo-700: #d4980e;
   --color-indigo-800: #a37209;
   --color-indigo-900: #7a5507;
   --color-indigo-950: #523904;
+
+  /* Light theme: flip dark background grays → EDMS light surfaces */
+  --color-gray-900: #ffffff; /* body bg */
+  --color-gray-800: #f8f9fa; /* card/panel bg */
+  --color-gray-700: #e9ecef; /* input bg, subtle surfaces */
+  --color-gray-600: #dee2e6; /* borders */
+
+  /* Light theme: flip light text grays → EDMS dark text values */
+  --color-gray-500: #868e96;
+  --color-gray-400: #6c757d; /* secondary text */
+  --color-gray-300: #495057; /* body text */
+  --color-gray-200: #343a40;
+  --color-gray-100: #212529;
 }
 
 @layer base {
@@ -61,18 +74,23 @@ html {
   scroll-behavior: smooth;
 }
 
+/* In light theme, text-white renders as dark — matches EDMS dark text on gold */
+.text-white {
+  color: #212529;
+}
+
 body {
   font-family: 'DM Sans', sans-serif;
-  background-color: #111827;
-  color: #d1d5db;
+  background-color: #ffffff;
+  color: #212529;
 }
 
 .tool-card {
   transition:
     transform 0.2s ease-in-out,
     box-shadow 0.2s ease-in-out;
-  border: 1px solid #374151;
-  background-color: #1f2937;
+  border: 1px solid #dee2e6;
+  background-color: #ffffff;
   padding: 1.5rem;
   border-radius: 0.5rem;
   display: flex;
@@ -82,11 +100,11 @@ body {
 }
 
 .tool-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   box-shadow:
-    0 10px 15px -3px rgba(0, 0, 0, 0.2),
-    0 4px 6px -2px rgba(0, 0, 0, 0.1);
-  border-color: #FCB51B;
+    0 10px 15px -3px rgba(252, 181, 27, 0.12),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-color: #fcb51b;
 }
 
 .category-header {
@@ -102,7 +120,7 @@ body {
   cursor: pointer;
   font-size: 1.25rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #212529;
   text-align: left;
 }
 
@@ -111,11 +129,11 @@ body {
 }
 
 .category-header:hover {
-  color: #fbbf24;
+  color: #d4980e;
 }
 
 .category-header:hover .category-chevron {
-  color: #fbbf24;
+  color: #d4980e;
 }
 
 .category-tools {
@@ -214,19 +232,19 @@ input[type='file']::file-selector-button {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #FCB51B;
+  background: #fcb51b;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #D4980E;
+  background: #d4980e;
   /* indigo-700 */
 }
 
 /* Style for drag-and-drop placeholder */
 .sortable-ghost {
   opacity: 0.4;
-  border: 2px dashed #FCB51B;
+  border: 2px dashed #fcb51b;
 }
 
 #embed-pdf-container > div {
@@ -310,7 +328,7 @@ footer a {
 }
 
 .cta-button {
-  background-color: #FCB51B;
+  background-color: #fcb51b;
   /* indigo-600 */
   color: white;
   font-weight: 600;
@@ -321,7 +339,7 @@ footer a {
 }
 
 .cta-button:hover {
-  background-color: #D4980E;
+  background-color: #d4980e;
   /* indigo-700 */
 }
 
@@ -360,7 +378,7 @@ footer a {
   right: 0;
   bottom: 0;
   height: 6px;
-  background: linear-gradient(120deg, #FCB51B, #8b5cf6);
+  background: linear-gradient(120deg, #fcb51b, #8b5cf6);
   z-index: -1;
 }
 
@@ -381,7 +399,7 @@ footer a {
   /* py-3 px-8 */
   border-radius: 0.5rem;
   /* rounded-lg */
-  background-image: linear-gradient(to bottom, #FCB51B, #FCB51B);
+  background-image: linear-gradient(to bottom, #fcb51b, #fcb51b);
   /* from-indigo-500 to-indigo-600 */
   color: #ffffff;
   /* text-white */
@@ -421,7 +439,7 @@ footer a {
   /* h-16 */
   border: 5px solid #374151;
   /* border-gray-700 */
-  border-bottom-color: #FCB51B;
+  border-bottom-color: #fcb51b;
   /* border-indigo-600 */
   border-radius: 50%;
   display: inline-block;
@@ -451,7 +469,7 @@ footer a {
 
 /* Highlight for selected signature in the saved list */
 .saved-signature.selected {
-  border-color: #FCB51B;
+  border-color: #fcb51b;
   /* indigo-600 */
   box-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
 }
@@ -655,7 +673,7 @@ button:disabled,
 
 .shortcut-input:focus {
   outline: none;
-  border-color: #FCB51B;
+  border-color: #fcb51b;
   box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
 }
 
